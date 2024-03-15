@@ -1,6 +1,26 @@
-import { useState } from "react"
+import React, { useState, useReducer } from "react"
 
 export default function Booking() {
+	const [availableTimes, dispatch] = useReducer(
+		timesReducer,
+		[],
+		initializeTimes
+	)
+
+	function initializeTimes() {
+		return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"]
+	}
+
+	function timesReducer(
+		state: string[],
+		action: { type: string; payload: string }
+	) {
+		switch (action.type) {
+			default:
+				return state
+		}
+	}
+
 	return (
 		<div
 			style={{
@@ -11,24 +31,31 @@ export default function Booking() {
 				paddingBottom: "24px",
 			}}
 		>
-			<Form />
+			<Form availableTimes={availableTimes} dispatch={dispatch} />
 		</div>
 	)
 }
 
-function Form() {
+function Form({
+	availableTimes,
+	dispatch,
+}: {
+	availableTimes: string[]
+	dispatch: React.Dispatch<{ type: string; payload: string }>
+}) {
 	const [date, setDate] = useState("")
 	const [time, setTime] = useState("17:00")
 	const [guests, setGuests] = useState(1)
 	const [occasion, setOccasion] = useState("Birthday")
 
-	const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"]
-
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
-
-		// TODO
 		console.log("Form submitted!")
+	}
+
+	const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setDate(e.target.value)
+		dispatch({ type: "UPDATE_TIMES", payload: e.target.value })
 	}
 
 	return (
@@ -41,7 +68,7 @@ function Form() {
 				type="date"
 				id="res-date"
 				value={date}
-				onChange={(e) => setDate(e.target.value)}
+				onChange={handleDateChange}
 			/>
 
 			<label htmlFor="res-time">Choose time</label>
@@ -50,7 +77,7 @@ function Form() {
 				value={time}
 				onChange={(e) => setTime(e.target.value)}
 			>
-				{availableTimes.map((timeOption, index) => (
+				{availableTimes.map((timeOption: string, index: number) => (
 					<option key={index} value={timeOption}>
 						{timeOption}
 					</option>
