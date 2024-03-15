@@ -46,15 +46,21 @@ function Specials() {
 			>
 				{[
 					[...Array(3)].map(() => (
-						<div style={{ display: "flex", flexDirection: "column" }}>
+						<div
+							style={{
+								display: "flex",
+								flexDirection: "column",
+								alignItems: "center",
+							}}
+						>
 							{/* Image IMG */}
-							<div
+							<img
 								style={{
 									display: "flex",
-									width: "100%",
+									width: "185px",
 									height: "185px",
-									backgroundColor: "#D9D9D9",
 								}}
+								src="https://play-lh.googleusercontent.com/t_XvMjLc2uxTVXMiQatnBGbmRDuu_6-5cbPzJJhyaPyBh4iPAqqJ2MwOo0JAxScRwUqL"
 							/>
 							<div
 								style={{
@@ -199,13 +205,13 @@ function Backstory() {
 					duis enim velit mollit.
 				</span>
 			</div>
-			<div
+			<img
 				style={{
 					display: "flex",
 					width: "440px",
 					height: "440px",
-					backgroundColor: "#D9D9D9",
 				}}
+				src="https://play-lh.googleusercontent.com/t_XvMjLc2uxTVXMiQatnBGbmRDuu_6-5cbPzJJhyaPyBh4iPAqqJ2MwOo0JAxScRwUqL"
 			/>
 		</div>
 	)

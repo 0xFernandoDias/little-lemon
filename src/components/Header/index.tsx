@@ -12,13 +12,13 @@ export function Header() {
 			}}
 		>
 			{/* Image IMG */}
-			<div
+			<img
 				style={{
 					display: "flex",
-					width: "202px",
+					width: "76px",
 					height: "76px",
-					backgroundColor: "#D9D9D9",
 				}}
+				src="https://play-lh.googleusercontent.com/t_XvMjLc2uxTVXMiQatnBGbmRDuu_6-5cbPzJJhyaPyBh4iPAqqJ2MwOo0JAxScRwUqL"
 			/>
 			<ul style={{ display: "flex" }}>
 				<li style={{ display: "flex", gap: "28px" }}>

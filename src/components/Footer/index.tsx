@@ -13,13 +13,13 @@ export function Footer() {
 			}}
 		>
 			{/* Image IMG */}
-			<div
+			<img
 				style={{
 					display: "flex",
 					width: "162px",
-					height: "279px",
-					backgroundColor: "#AFAFAF",
+					height: "162px",
 				}}
+				src="https://play-lh.googleusercontent.com/t_XvMjLc2uxTVXMiQatnBGbmRDuu_6-5cbPzJJhyaPyBh4iPAqqJ2MwOo0JAxScRwUqL"
 			/>
 			<div
 				style={{

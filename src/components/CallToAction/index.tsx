@@ -28,13 +28,13 @@ export function CallToAction() {
 				<Button href="/booking">Reserve a Table</Button>
 			</div>
 			{/* Image IMG */}
-			<div
+			<img
 				style={{
 					display: "flex",
 					width: "375px",
 					height: "325px",
-					backgroundColor: "#D9D9D9",
 				}}
+				src="https://play-lh.googleusercontent.com/t_XvMjLc2uxTVXMiQatnBGbmRDuu_6-5cbPzJJhyaPyBh4iPAqqJ2MwOo0JAxScRwUqL"
 			/>
 		</main>
 	)
