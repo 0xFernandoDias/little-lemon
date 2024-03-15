@@ -1,31 +1,7 @@
 import { useEffect, useReducer, useState } from "react"
-import { fetchAPI, submitAPI } from "../../helpers/api"
+import { submitAPI } from "../../helpers/api"
 import { useNavigate } from "react-router-dom"
-
-const initializeState = {
-	date: "",
-	availableTimesByDate: [],
-}
-
-const timesReducer = (
-	state: {
-		date: string
-		availableTimesByDate: string[]
-	},
-	action: { type: string; field: string; payload: string }
-) => {
-	switch (action.type) {
-		case "UPDATE_TIMES":
-			return {
-				...state,
-				[action.field]: action.payload,
-			}
-		case "INITIALIZE_TIMES":
-			return initializeState
-		default:
-			return state
-	}
-}
+import { initializeState, initializeTimes, timesReducer } from "../../helpers"
 
 export function BookingForm() {
 	const navigate = useNavigate()
@@ -175,21 +151,21 @@ export function BookingForm() {
 	}
 
 	useEffect(() => {
-		const initializeTimes = async () => {
-			const response = await fetchAPI(availableTimes.date)
+		async function fetchDates() {
+			if (availableTimes.date) {
+				const res = await initializeTimes(availableTimes.date)
 
-			if (response) {
-				dispatch({
-					type: "UPDATE_TIMES",
-					field: "availableTimesByDate",
-					payload: response as string,
-				})
+				if (res) {
+					dispatch({
+						type: "UPDATE_TIMES",
+						field: "availableTimesByDate",
+						payload: res as string,
+					})
+				}
 			}
 		}
 
-		if (availableTimes.date) {
-			initializeTimes()
-		}
+		fetchDates()
 	}, [availableTimes.date])
 
 	useEffect(() => {

@@ -35,7 +35,7 @@ function Specials() {
 				}}
 			>
 				<span style={{ fontSize: "32px" }}>Specials</span>
-				<Button>Online Menu</Button>
+				<Button href="/">Online Menu</Button>
 			</div>
 			<div
 				style={{
@@ -87,7 +87,7 @@ function Specials() {
 									and rosemary croutons.
 								</span>
 
-								<a>Order a delivery</a>
+								<a href="/">Order a delivery</a>
 							</div>
 						</div>
 					)),
@@ -153,7 +153,10 @@ function Testimonials() {
 								/>
 								<span>Name</span>
 							</div>
-							<span>Review rext</span>
+							<span>
+								Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+								amet sint.
+							</span>
 						</div>
 					)),
 				]}

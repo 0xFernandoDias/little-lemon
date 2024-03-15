@@ -25,7 +25,7 @@ export function CallToAction() {
 						eiusmod tempor incididunt ut labore et dolore magna aliqua.
 					</span>
 				</div>
-				<Button>Reserve a Table</Button>
+				<Button href="/booking">Reserve a Table</Button>
 			</div>
 			{/* Image IMG */}
 			<div
