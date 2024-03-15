@@ -1,12 +1,24 @@
-import { useEffect, useReducer, useState } from "react"
+import { useEffect, useState } from "react"
 import { submitAPI } from "../../helpers/api"
 import { useNavigate } from "react-router-dom"
-import { initializeState, initializeTimes, timesReducer } from "../../helpers"
+import { initializeTimes } from "../../helpers"
 
-export function BookingForm() {
+export function BookingForm({
+	availableTimes,
+	dispatch,
+}: {
+	availableTimes: {
+		date: string
+		availableTimesByDate: string[]
+	}
+	dispatch: React.Dispatch<{
+		type: string
+		field: string
+		payload: string
+	}>
+}) {
 	const navigate = useNavigate()
 
-	const [availableTimes, dispatch] = useReducer(timesReducer, initializeState)
 	const [isConfirmedBooking, setIsConfirmedBooking] = useState(false)
 
 	const [formValue, setFormValue] = useState({
@@ -190,17 +202,17 @@ export function BookingForm() {
 	}, [isConfirmedBooking, navigate])
 
 	return (
-		<div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+		<div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
 			<header>Book Now</header>
 			<form
-				style={{ display: "grid", maxWidth: "200px", gap: "20px" }}
+				style={{ display: "grid", maxWidth: "12.5rem", gap: "1.25rem" }}
 				onSubmit={onSubmit}
 			>
 				<div
 					style={{
 						display: "flex",
 						flexDirection: "column",
-						gap: "4px",
+						gap: "0.25rem",
 					}}
 				>
 					<label htmlFor="res-date">Choose date</label>
@@ -222,7 +234,7 @@ export function BookingForm() {
 					style={{
 						display: "flex",
 						flexDirection: "column",
-						gap: "4px",
+						gap: "0.25rem",
 					}}
 				>
 					<label htmlFor="res-time">Choose time</label>
@@ -252,7 +264,7 @@ export function BookingForm() {
 					style={{
 						display: "flex",
 						flexDirection: "column",
-						gap: "4px",
+						gap: "0.25rem",
 					}}
 				>
 					<label htmlFor="guests">Number of guests</label>
@@ -275,7 +287,7 @@ export function BookingForm() {
 					style={{
 						display: "flex",
 						flexDirection: "column",
-						gap: "4px",
+						gap: "0.25rem",
 					}}
 				>
 					<label htmlFor="occasion">Occasion</label>

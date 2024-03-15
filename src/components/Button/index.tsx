@@ -11,15 +11,15 @@ export function Button({
 		<a
 			style={{
 				display: "flex",
-				maxWidth: "200px",
+				maxWidth: "12.5rem",
 				backgroundColor: "black",
 				color: "white",
 				alignItems: "center",
 				justifyContent: "center",
-				paddingLeft: "4px",
-				paddingRight: "4px",
-				paddingTop: "20px",
-				paddingBottom: "20px",
+				paddingLeft: "0.25rem",
+				paddingRight: "0.25rem",
+				paddingTop: "1.25rem",
+				paddingBottom: "1.25rem",
 				borderRadius: "5px",
 				cursor: "pointer",
 			}}
