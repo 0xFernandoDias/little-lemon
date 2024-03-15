@@ -17,9 +17,6 @@ export function BookingForm() {
 	})
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const [isLoading, setIsLoading] = useState(true)
-
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [formErrors, setFormErrors] = useState({
 		date: "",
 		time: "",
@@ -177,7 +174,6 @@ export function BookingForm() {
 				...prevState,
 				time: availableTimes.availableTimesByDate[0],
 			}))
-			setIsLoading(false)
 		}
 	}, [availableTimes])
 

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react"
+import { render, screen, fireEvent } from "@testing-library/react"
 import { BookingForm } from "../components/BookingForm"
 import { initializeTimes, timesReducer } from "../helpers"
 
@@ -58,4 +58,57 @@ test("updateTimes returns the same value provided in the state", () => {
 
 	// Assert the result
 	expect(result.availableTimesByDate).toEqual(["New Time"])
+})
+
+test("HTML5 validation attributes are applied", () => {
+	render(<BookingForm />)
+
+	// Validate required attribute
+	const dateInput = screen.getByLabelText("Choose date")
+	expect(dateInput).toHaveProperty("required")
+
+	// Validate min and max attributes
+	const guestsInput = screen.getByLabelText("Number of guests")
+	expect(guestsInput).toHaveProperty("min", "1")
+	expect(guestsInput).toHaveProperty("max", "10")
+})
+
+test("JavaScript validation functions work correctly", () => {
+	render(<BookingForm />)
+
+	// Get form inputs
+	const dateInput = screen.getByLabelText("Choose date")
+	const guestsInput = screen.getByLabelText("Number of guests")
+	const occasionInput = screen.getByLabelText("Occasion")
+
+	// Invalid submission
+	fireEvent.change(dateInput, { target: { value: "" } })
+	fireEvent.change(guestsInput, { target: { value: "0" } })
+	fireEvent.change(occasionInput, { target: { value: "" } })
+
+	fireEvent.submit(
+		screen.getByRole("button", { name: "Make Your reservation" })
+	)
+
+	expect(screen.getByText("Date is required")).toBeDefined()
+	expect(
+		screen.getByText("Number of guests must be between 1 and 10")
+	).toBeDefined()
+	expect(screen.getByText("Occasion is required")).toBeDefined()
+
+	// Valid submission
+	fireEvent.change(dateInput, { target: { value: "2024-03-15" } })
+	fireEvent.change(guestsInput, { target: { value: "2" } })
+	fireEvent.change(occasionInput, { target: { value: "Birthday" } })
+
+	fireEvent.submit(
+		screen.getByRole("button", { name: "Make Your reservation" })
+	)
+
+	// Ensure no validation errors are displayed
+	expect(screen.queryByText("Date is required")).toBeNull()
+	expect(
+		screen.queryByText("Number of guests must be between 1 and 10")
+	).toBeNull()
+	expect(screen.queryByText("Occasion is required")).toBeNull()
 })
