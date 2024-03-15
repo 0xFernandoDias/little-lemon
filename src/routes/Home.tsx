@@ -1,8 +1,10 @@
 import { Button } from "../components/Button"
+import { CallToAction } from "../components/CallToAction"
 
 export default function Home() {
 	return (
 		<>
+			<CallToAction />
 			<Specials />
 			<Testimonials />
 			<Backstory />

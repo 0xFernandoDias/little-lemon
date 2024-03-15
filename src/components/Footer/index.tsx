@@ -6,10 +6,10 @@ export function Footer() {
 				gap: "69px",
 				alignItems: "center",
 				paddingLeft: "290px",
-				paddingRight: "290px",
 				paddingTop: "60px",
 				paddingBottom: "60px",
 				backgroundColor: "#D9D9D9",
+				maxWidth: "100%",
 			}}
 		>
 			{/* Image IMG */}
