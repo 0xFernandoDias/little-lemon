@@ -6,6 +6,7 @@ import ErrorPage from "./error-page"
 import Home from "./routes/Home"
 import Booking from "./routes/Booking"
 import "./index.css"
+import ConfirmBooking from "./routes/ConfirmBooking"
 
 const router = createBrowserRouter([
 	{
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
 			{
 				path: "/booking",
 				element: <Booking />,
+			},
+			{
+				path: "/confirmBooking",
+				element: <ConfirmBooking />,
 			},
 		],
 	},

@@ -3,7 +3,7 @@ import { BookingForm } from "../components/BookingForm"
 import { initializeTimes, timesReducer } from "../helpers"
 
 test("Renders the BookingForm heading", () => {
-	render(<BookingForm availableTimes={[]} />)
+	render(<BookingForm />)
 	const headingElement = screen.getByText("Book Now")
 	expect(headingElement).toBeTruthy()
 })
